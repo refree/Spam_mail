@@ -13,6 +13,8 @@ output: github_document
 
 setwd로 설정한 디렉토리에 다운받아 저장합니다. 
 
+reference: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository [http://archive.ics.uci.edu/ml]. Irvine, CA: University of California, School of Information and Computer Science.
+
 
 해당 데이터에 대한 자세한 설명은 [링크](https://docs.google.com/presentation/d/1BKo0O1ItmWXmsvab_R_wvrZCBtTVBwbhUszA1u5ZmI0/edit#slide=id.g2366bcb1b2_0_57)를 참고해주세요.
 

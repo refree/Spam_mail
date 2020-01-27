@@ -11,6 +11,8 @@
 
 setwd로 설정한 디렉토리에 다운받아 저장합니다.
 
+reference: Dua, D. and Graff, C. (2019). UCI Machine Learning Repository \[<http://archive.ics.uci.edu/ml>\]. Irvine, CA: University of California, School of Information and Computer Science.
+
 해당 데이터에 대한 자세한 설명은 [링크](https://docs.google.com/presentation/d/1BKo0O1ItmWXmsvab_R_wvrZCBtTVBwbhUszA1u5ZmI0/edit#slide=id.g2366bcb1b2_0_57)를 참고해주세요.
 
 요약하자면,
@@ -429,11 +431,11 @@ printcp(rpart_spam); plotcp(rpart_spam) #과적합 방지를 위해 cp(Complexit
     ## 
     ##         CP nsplit rel error  xerror     xstd
     ## 1 0.476558      0   1.00000 1.00000 0.018282
-    ## 2 0.148924      1   0.52344 0.54495 0.015363
-    ## 3 0.043023      2   0.37452 0.45339 0.014332
-    ## 4 0.030888      4   0.28847 0.34032 0.012749
-    ## 5 0.010480      5   0.25758 0.28185 0.011756
-    ## 6 0.010000      6   0.24710 0.26751 0.011489
+    ## 2 0.148924      1   0.52344 0.54881 0.015403
+    ## 3 0.043023      2   0.37452 0.45836 0.014393
+    ## 4 0.030888      4   0.28847 0.33480 0.012661
+    ## 5 0.010480      5   0.25758 0.27634 0.011654
+    ## 6 0.010000      6   0.24710 0.26696 0.011479
 
 ![](index_files/figure-markdown_github/tree_3-1.png)
 
@@ -451,11 +453,11 @@ summary(rpart_spam_pruning)             #트리 요약값 정리
     ## 
     ##           CP nsplit rel error    xerror       xstd
     ## 1 0.47655819      0 1.0000000 1.0000000 0.01828190
-    ## 2 0.14892443      1 0.5234418 0.5449531 0.01536344
-    ## 3 0.04302261      2 0.3745174 0.4533922 0.01433179
-    ## 4 0.03088803      4 0.2884721 0.3403199 0.01274906
-    ## 5 0.01047987      5 0.2575841 0.2818533 0.01175569
-    ## 6 0.01000000      6 0.2471042 0.2675124 0.01148906
+    ## 2 0.14892443      1 0.5234418 0.5488141 0.01540283
+    ## 3 0.04302261      2 0.3745174 0.4583563 0.01439287
+    ## 4 0.03088803      4 0.2884721 0.3348042 0.01266119
+    ## 5 0.01047987      5 0.2575841 0.2763376 0.01165432
+    ## 6 0.01000000      6 0.2471042 0.2669608 0.01147861
     ## 
     ## Variable importance
     ##              char_freq_..4           word_freq_remove 
@@ -637,26 +639,26 @@ confusionMatrix(rpart_spam_predict, test$class) #생성된 트리 모형의 평�
     ## 
     ##           Reference
     ## Prediction   0   1
-    ##          0 811  86
-    ##          1  25 457
+    ##          0 796 100
+    ##          1  40 443
     ##                                           
-    ##                Accuracy : 0.9195          
-    ##                  95% CI : (0.9039, 0.9333)
+    ##                Accuracy : 0.8985          
+    ##                  95% CI : (0.8813, 0.9139)
     ##     No Information Rate : 0.6062          
     ##     P-Value [Acc > NIR] : < 2.2e-16       
     ##                                           
-    ##                   Kappa : 0.828           
+    ##                   Kappa : 0.7832          
     ##                                           
-    ##  Mcnemar's Test P-Value : 1.234e-08       
+    ##  Mcnemar's Test P-Value : 6.151e-07       
     ##                                           
-    ##             Sensitivity : 0.9701          
-    ##             Specificity : 0.8416          
-    ##          Pos Pred Value : 0.9041          
-    ##          Neg Pred Value : 0.9481          
+    ##             Sensitivity : 0.9522          
+    ##             Specificity : 0.8158          
+    ##          Pos Pred Value : 0.8884          
+    ##          Neg Pred Value : 0.9172          
     ##              Prevalence : 0.6062          
-    ##          Detection Rate : 0.5881          
-    ##    Detection Prevalence : 0.6505          
-    ##       Balanced Accuracy : 0.9059          
+    ##          Detection Rate : 0.5772          
+    ##    Detection Prevalence : 0.6497          
+    ##       Balanced Accuracy : 0.8840          
     ##                                           
     ##        'Positive' Class : 0               
     ## 
@@ -677,11 +679,11 @@ data_rf
     ##                      Number of trees: 500
     ## No. of variables tried at each split: 7
     ## 
-    ##         OOB estimate of  error rate: 5.25%
+    ##         OOB estimate of  error rate: 4.93%
     ## Confusion matrix:
     ##      0    1 class.error
-    ## 0 1886   66  0.03381148
-    ## 1  103 1167  0.08110236
+    ## 0 1893   59  0.03022541
+    ## 1  100 1170  0.07874016
 
 ``` r
 plot(data_rf) #나무의 갯수에 따른 오차율
@@ -704,26 +706,26 @@ confusionMatrix(data = data_rf_predict, reference=test$class) #생성된 RF모�
     ## 
     ##           Reference
     ## Prediction   0   1
-    ##          0 820  40
-    ##          1  16 503
+    ##          0 809  45
+    ##          1  27 498
     ##                                           
-    ##                Accuracy : 0.9594          
-    ##                  95% CI : (0.9476, 0.9692)
+    ##                Accuracy : 0.9478          
+    ##                  95% CI : (0.9347, 0.9589)
     ##     No Information Rate : 0.6062          
-    ##     P-Value [Acc > NIR] : < 2.2e-16       
+    ##     P-Value [Acc > NIR] : < 2e-16         
     ##                                           
-    ##                   Kappa : 0.9143          
+    ##                   Kappa : 0.89            
     ##                                           
-    ##  Mcnemar's Test P-Value : 0.002116        
+    ##  Mcnemar's Test P-Value : 0.04513         
     ##                                           
-    ##             Sensitivity : 0.9809          
-    ##             Specificity : 0.9263          
-    ##          Pos Pred Value : 0.9535          
-    ##          Neg Pred Value : 0.9692          
+    ##             Sensitivity : 0.9677          
+    ##             Specificity : 0.9171          
+    ##          Pos Pred Value : 0.9473          
+    ##          Neg Pred Value : 0.9486          
     ##              Prevalence : 0.6062          
-    ##          Detection Rate : 0.5946          
-    ##    Detection Prevalence : 0.6236          
-    ##       Balanced Accuracy : 0.9536          
+    ##          Detection Rate : 0.5867          
+    ##    Detection Prevalence : 0.6193          
+    ##       Balanced Accuracy : 0.9424          
     ##                                           
     ##        'Positive' Class : 0               
     ## 
